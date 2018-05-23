@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		E4A63E0D20B3F7BD001070D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E0C20B3F7BD001070D3 /* AppDelegate.m */; };
-		E4A63E1020B3F7BD001070D3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E0F20B3F7BD001070D3 /* ViewController.m */; };
 		E4A63E1320B3F7BD001070D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4A63E1120B3F7BD001070D3 /* Main.storyboard */; };
 		E4A63E1520B3F7BD001070D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A63E1420B3F7BD001070D3 /* Assets.xcassets */; };
 		E4A63E1820B3F7BD001070D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4A63E1620B3F7BD001070D3 /* LaunchScreen.storyboard */; };
 		E4A63E1B20B3F7BD001070D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E1A20B3F7BD001070D3 /* main.m */; };
 		E4A63E2520B3F7BE001070D3 /* WYCollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E2420B3F7BE001070D3 /* WYCollectionViewTests.m */; };
 		E4A63E3020B3F7BE001070D3 /* WYCollectionViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E2F20B3F7BE001070D3 /* WYCollectionViewUITests.m */; };
+		E4A63E3F20B3FD5B001070D3 /* WYHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E3E20B3FD5B001070D3 /* WYHomeController.m */; };
+		E4A63E4220B3FE82001070D3 /* WYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E4120B3FE82001070D3 /* WYTabBarController.m */; };
+		E4A63E8420B4050A001070D3 /* WYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E8320B4050A001070D3 /* WYNavigationController.m */; };
+		E4A63E8720B40FDF001070D3 /* WYCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E8620B40FDF001070D3 /* WYCollectionView.m */; };
+		E4A63E8A20B41126001070D3 /* WYCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A63E8920B41126001070D3 /* WYCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +42,6 @@
 		E4A63E0820B3F7BD001070D3 /* WYCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WYCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A63E0B20B3F7BD001070D3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E4A63E0C20B3F7BD001070D3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E4A63E0E20B3F7BD001070D3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E4A63E0F20B3F7BD001070D3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E4A63E1220B3F7BD001070D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4A63E1420B3F7BD001070D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4A63E1720B3F7BD001070D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,18 @@
 		E4A63E2B20B3F7BE001070D3 /* WYCollectionViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WYCollectionViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A63E2F20B3F7BE001070D3 /* WYCollectionViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCollectionViewUITests.m; sourceTree = "<group>"; };
 		E4A63E3120B3F7BE001070D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4A63E3D20B3FD5B001070D3 /* WYHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHomeController.h; sourceTree = "<group>"; };
+		E4A63E3E20B3FD5B001070D3 /* WYHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHomeController.m; sourceTree = "<group>"; };
+		E4A63E4020B3FE82001070D3 /* WYTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYTabBarController.h; sourceTree = "<group>"; };
+		E4A63E4120B3FE82001070D3 /* WYTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYTabBarController.m; sourceTree = "<group>"; };
+		E4A63E8220B4050A001070D3 /* WYNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYNavigationController.h; sourceTree = "<group>"; };
+		E4A63E8320B4050A001070D3 /* WYNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYNavigationController.m; sourceTree = "<group>"; };
+		E4A63E8520B40FDF001070D3 /* WYCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCollectionView.h; sourceTree = "<group>"; };
+		E4A63E8620B40FDF001070D3 /* WYCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCollectionView.m; sourceTree = "<group>"; };
+		E4A63E8820B41126001070D3 /* WYCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCollectionViewCell.h; sourceTree = "<group>"; };
+		E4A63E8920B41126001070D3 /* WYCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCollectionViewCell.m; sourceTree = "<group>"; };
+		E4A63E8B20B422C3001070D3 /* WYConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYConstant.h; sourceTree = "<group>"; };
+		E4A63E8C20B42310001070D3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +117,21 @@
 			children = (
 				E4A63E0B20B3F7BD001070D3 /* AppDelegate.h */,
 				E4A63E0C20B3F7BD001070D3 /* AppDelegate.m */,
-				E4A63E0E20B3F7BD001070D3 /* ViewController.h */,
-				E4A63E0F20B3F7BD001070D3 /* ViewController.m */,
+				E4A63E8B20B422C3001070D3 /* WYConstant.h */,
+				E4A63E8C20B42310001070D3 /* PrefixHeader.pch */,
+				E4A63E3D20B3FD5B001070D3 /* WYHomeController.h */,
+				E4A63E3E20B3FD5B001070D3 /* WYHomeController.m */,
+				E4A63E4020B3FE82001070D3 /* WYTabBarController.h */,
+				E4A63E4120B3FE82001070D3 /* WYTabBarController.m */,
+				E4A63E8220B4050A001070D3 /* WYNavigationController.h */,
+				E4A63E8320B4050A001070D3 /* WYNavigationController.m */,
+				E4A63E8520B40FDF001070D3 /* WYCollectionView.h */,
+				E4A63E8620B40FDF001070D3 /* WYCollectionView.m */,
+				E4A63E8820B41126001070D3 /* WYCollectionViewCell.h */,
+				E4A63E8920B41126001070D3 /* WYCollectionViewCell.m */,
 				E4A63E1120B3F7BD001070D3 /* Main.storyboard */,
 				E4A63E1420B3F7BD001070D3 /* Assets.xcassets */,
+				E4A63E4320B402A4001070D3 /* New Group */,
 				E4A63E1620B3F7BD001070D3 /* LaunchScreen.storyboard */,
 				E4A63E1920B3F7BD001070D3 /* Info.plist */,
 				E4A63E1A20B3F7BD001070D3 /* main.m */,
@@ -130,6 +155,13 @@
 				E4A63E3120B3F7BE001070D3 /* Info.plist */,
 			);
 			path = WYCollectionViewUITests;
+			sourceTree = "<group>";
+		};
+		E4A63E4320B402A4001070D3 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +297,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4A63E1020B3F7BD001070D3 /* ViewController.m in Sources */,
 				E4A63E1B20B3F7BD001070D3 /* main.m in Sources */,
+				E4A63E8420B4050A001070D3 /* WYNavigationController.m in Sources */,
+				E4A63E8720B40FDF001070D3 /* WYCollectionView.m in Sources */,
+				E4A63E3F20B3FD5B001070D3 /* WYHomeController.m in Sources */,
 				E4A63E0D20B3F7BD001070D3 /* AppDelegate.m in Sources */,
+				E4A63E4220B3FE82001070D3 /* WYTabBarController.m in Sources */,
+				E4A63E8A20B41126001070D3 /* WYCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 396YGDR2AV;
+				GCC_PREFIX_HEADER = "/Users/VIVILIA/Library/Autosave Information/WYCollectionView/WYCollectionView/PrefixHeader.pch";
 				INFOPLIST_FILE = WYCollectionView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WYCollectionView;
@@ -446,6 +483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 396YGDR2AV;
+				GCC_PREFIX_HEADER = "/Users/VIVILIA/Library/Autosave Information/WYCollectionView/WYCollectionView/PrefixHeader.pch";
 				INFOPLIST_FILE = WYCollectionView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WYCollectionView;

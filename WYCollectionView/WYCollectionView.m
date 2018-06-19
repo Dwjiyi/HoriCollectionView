@@ -9,12 +9,11 @@
 #import "WYCollectionView.h"
 #import "WYCollectionViewCell.h"
 
-static NSInteger Count = 5;
+#define Count 5
 
 static NSString *CellIdentiifer = @"CellIdentiifer";
 
 @interface WYCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
-
 
 @end
 
@@ -26,7 +25,6 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
     
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
-        
         self.delegate = self;
         self.dataSource = self;
         self.clipsToBounds = YES;
@@ -56,49 +54,59 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
     
     UISwipeGestureRecognizer *gesture = swipeGesture;
     
+    CGFloat itemWidth = 290.0;
+    CGFloat margin = 10.0;
+    NSInteger width = itemWidth+margin;
+    
+    // 计算当前滑动的cell的索引
     CGPoint point = [gesture locationInView:self];
-    NSInteger index = (point.x-15) / (290+10); // 计算当前滑动的cell的索引
-    NSLog(@"index:%ld x:%lf",index,point.x);
+    NSInteger index = (point.x-15) / width;
+    NSLog(@"index:%ld x:%lf contentOffset:%lf",index,point.x,self.contentOffset.x);
     
-    NSInteger width = 290+10;
+    // 将点转化为window上的点，计算该点在当前屏幕上的x坐标
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    CGPoint windowPoint = [self convertPoint:point toView:window];
+    NSInteger x = (NSInteger)windowPoint.x % (NSInteger)SCREEN_WIDTH;
     
-    if (gesture.direction == UISwipeGestureRecognizerDirectionLeft && index <= Count-2){ // 右滚
+    if (gesture.direction == UISwipeGestureRecognizerDirectionLeft){
         
-        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        // 1.将点转化为window上的点
-        CGPoint windowPoint = [self convertPoint:point toView:window];
-        // 2.计算该点在当前屏幕上的x坐标
-        NSInteger x = (NSInteger)windowPoint.x % (NSInteger)SCREEN_WIDTH;
-        // 3.如果该点在屏幕上第一个cell上，索引+1，右滚到第二个cell上;如果该点在屏幕第二个cell上，则索引不+，右滚到第二个cell上
-        if (x < width+15) index = index + 1;
+        // 右划特殊考虑最后一个
+        if (index <= Count-2 && x < width+15){
+            index = index + 1;
+        }
+   
+
+    } else if (swipeGesture.direction == UISwipeGestureRecognizerDirectionRight){
         
-    } else if (swipeGesture.direction == UISwipeGestureRecognizerDirectionRight && index > 0){ // 左滚
-        
-        index = index - 1;
+        // 左划特殊考虑第一个和倒数第二个
+        if (index > 0){
+            
+            if (self.contentOffset.x > width*(Count-2) && index == Count -2) {
+                NSLog(@"这是在最后一页左划倒数第二个item,index不变");
+            } else {
+                
+                if (x <= 15){
+                    
+                }else if ((x > 15 && x < width+15)||index == 1) {
+                    index = index - 1;
+                } else {
+                    index = index - 2;
+                }
+            }
+        }
     }
     
     if (index == Count-1) { // 往最后一个页面滑动
         
         [UIView animateWithDuration:0.3 animations:^{
-            
-            [self setContentOffset:CGPointMake(width*index-(SCREEN_WIDTH-15-290-15), 0) animated:YES];
-            
-        } completion:^(BOOL finished) {
-            
+            [self setContentOffset:CGPointMake(width*index-(SCREEN_WIDTH-15-itemWidth-15), 0) animated:YES];
         }];
-        
     } else {
         
         [UIView animateWithDuration:0.3 animations:^{
-            
             [self setContentOffset:CGPointMake(width*index, 0) animated:YES];
-            
-        } completion:^(BOOL finished) {
-            
         }];
     }
-    
-    
 }
 
 
@@ -106,19 +114,16 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
 #pragma mark - collection view delegate
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
     return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     return Count;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     WYCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentiifer forIndexPath:indexPath];
     return cell;
 }
@@ -126,13 +131,8 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
 
 #pragma mark - collection view data source
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     NSLog(@"点击我了，我是第%ld个",indexPath.row);
-    
 }
-
-
-
 
 
 

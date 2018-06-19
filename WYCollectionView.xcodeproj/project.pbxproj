@@ -468,7 +468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 396YGDR2AV;
-				GCC_PREFIX_HEADER = "/Users/VIVILIA/Library/Autosave Information/WYCollectionView/WYCollectionView/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/wy/Desktop/MyDemo/WYCollectionView/WYCollectionView/PrefixHeader.pch;
 				INFOPLIST_FILE = WYCollectionView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WYCollectionView;
@@ -483,7 +483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 396YGDR2AV;
-				GCC_PREFIX_HEADER = "/Users/VIVILIA/Library/Autosave Information/WYCollectionView/WYCollectionView/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/wy/Desktop/MyDemo/WYCollectionView/WYCollectionView/PrefixHeader.pch;
 				INFOPLIST_FILE = WYCollectionView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WYCollectionView;

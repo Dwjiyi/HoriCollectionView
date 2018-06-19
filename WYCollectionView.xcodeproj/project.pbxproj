@@ -131,7 +131,6 @@
 				E4A63E8920B41126001070D3 /* WYCollectionViewCell.m */,
 				E4A63E1120B3F7BD001070D3 /* Main.storyboard */,
 				E4A63E1420B3F7BD001070D3 /* Assets.xcassets */,
-				E4A63E4320B402A4001070D3 /* New Group */,
 				E4A63E1620B3F7BD001070D3 /* LaunchScreen.storyboard */,
 				E4A63E1920B3F7BD001070D3 /* Info.plist */,
 				E4A63E1A20B3F7BD001070D3 /* main.m */,
@@ -155,13 +154,6 @@
 				E4A63E3120B3F7BE001070D3 /* Info.plist */,
 			);
 			path = WYCollectionViewUITests;
-			sourceTree = "<group>";
-		};
-		E4A63E4320B402A4001070D3 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

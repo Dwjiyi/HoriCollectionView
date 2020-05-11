@@ -1,2 +1,0 @@
-# WYCollectionView
-横向分页滑动的collectionView

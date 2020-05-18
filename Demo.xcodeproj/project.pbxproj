@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152ACAB7246C33A80010A209 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152ACAB6246C33A80010A209 /* ViewController3.swift */; };
+		152ACAB92471792F0010A209 /* BannerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152ACAB82471792F0010A209 /* BannerFlowLayout.swift */; };
 		1598FC152469A8CD00A5196C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC142469A8CD00A5196C /* AppDelegate.swift */; };
 		1598FC172469A8CD00A5196C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC162469A8CD00A5196C /* SceneDelegate.swift */; };
 		1598FC192469A8CD00A5196C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC182469A8CD00A5196C /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		152ACAB6246C33A80010A209 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		152ACAB82471792F0010A209 /* BannerFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFlowLayout.swift; sourceTree = "<group>"; };
 		1598FC112469A8CD00A5196C /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1598FC142469A8CD00A5196C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1598FC162469A8CD00A5196C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				1598FC142469A8CD00A5196C /* AppDelegate.swift */,
 				1598FC162469A8CD00A5196C /* SceneDelegate.swift */,
 				1598FC182469A8CD00A5196C /* ViewController.swift */,
+				152ACAB6246C33A80010A209 /* ViewController3.swift */,
+				152ACAB82471792F0010A209 /* BannerFlowLayout.swift */,
 				1598FC4E2469BA5C00A5196C /* ViewController2.swift */,
 				1598FC1A2469A8CD00A5196C /* Main.storyboard */,
 				1598FC1D2469A8CE00A5196C /* Assets.xcassets */,
@@ -265,10 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				152ACAB7246C33A80010A209 /* ViewController3.swift in Sources */,
 				1598FC4F2469BA5C00A5196C /* ViewController2.swift in Sources */,
 				1598FC192469A8CD00A5196C /* ViewController.swift in Sources */,
 				1598FC152469A8CD00A5196C /* AppDelegate.swift in Sources */,
 				1598FC172469A8CD00A5196C /* SceneDelegate.swift in Sources */,
+				152ACAB92471792F0010A209 /* BannerFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

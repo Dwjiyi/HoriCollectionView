@@ -13,7 +13,7 @@ let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.height
 
 class ViewController: UIViewController {
     
-    let itemCount = 4
+    let itemCount = 20
     let itemSize = CGSize(width: 280, height: 80)
     let minimumInteritemSpacing: CGFloat = 10
     let minimumLineSpacing: CGFloat = 10
@@ -24,16 +24,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         view.addSubview(collectionView)
+        view.addSubview(collectionView2)
         view.addSubview(otherButton)
     }
     
     @objc func onNextTap() {
-        let vc = ViewController2()
+        let vc = ViewController3()
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
     }
     
+
+    
+    //MARK: - Lazy Load Properties
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 150, width: SCREEN_WIDTH , height: 120), collectionViewLayout: self.layout)
         collectionView.backgroundColor = UIColor.green
@@ -44,6 +48,22 @@ class ViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         let scrollWidth = CGFloat(itemCount) * (itemSize.width + minimumInteritemSpacing) + layout.sectionInset.left + layout.sectionInset.right
         collectionView.contentSize = CGSize(width: scrollWidth, height: 120)
+        collectionView.decelerationRate = .fast
+        return collectionView
+    }()
+    
+    
+    lazy var collectionView2: UICollectionView = {
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 350, width: SCREEN_WIDTH , height: 120), collectionViewLayout: self.layout2)
+        collectionView.backgroundColor = UIColor.green
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        let scrollWidth = CGFloat(itemCount) * (itemSize.width + minimumInteritemSpacing) + layout2.sectionInset.left + layout2.sectionInset.right
+        collectionView.contentSize = CGSize(width: scrollWidth, height: 120)
+        collectionView.decelerationRate = .normal
         return collectionView
     }()
     
@@ -57,9 +77,19 @@ class ViewController: UIViewController {
         return layout
     }()
     
+    lazy var layout2: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = itemSize
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
+        return layout
+    }()
+    
     lazy var otherButton: UIButton = {
         let otherButton = UIButton(type: .custom)
-        otherButton.frame = CGRect(x: 50, y: 400, width: SCREEN_WIDTH - 100, height: 25)
+        otherButton.frame = CGRect(x: 50, y: 500, width: SCREEN_WIDTH - 100, height: 25)
         otherButton.addTarget(self, action: #selector(onNextTap), for: .touchUpInside)
         otherButton.backgroundColor = UIColor.red
         otherButton.setTitle("另一个繁琐的实现，仅供参考", for: .normal)
@@ -111,20 +141,34 @@ extension ViewController: UIScrollViewDelegate {
         if (index == itemCount - 1 && dragIndex == 1) {
             return
         }
-        collectionView.scrollToItem(at: IndexPath(row: index + dragIndex, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        
+        if scrollView == collectionView {
+            collectionView.scrollToItem(at: IndexPath(row: index + dragIndex, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        } else {
+            collectionView2.scrollToItem(at: IndexPath(row: index + dragIndex, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        }
     }
     
     /// 滑动即将开始减速
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        
         let index = Int((dragStartX + (itemSize.width + minimumInteritemSpacing) * 0.5) / (itemSize.width + minimumLineSpacing))
         print("scrollViewWillBeginDecelerating: \(index)")
         
         if (index == itemCount - 1 && dragIndex == 1) {
             return
         }
-        collectionView.scrollToItem(at: IndexPath(row: index + dragIndex, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        
+        if scrollView == collectionView {
+            collectionView.scrollToItem(at: IndexPath(row: index + dragIndex, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+
+        } else {
+            collectionView2.scrollToItem(at: IndexPath(row: index + dragIndex, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+
+        }
     }
+    
+
     
 }
 
+ 

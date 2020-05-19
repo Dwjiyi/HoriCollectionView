@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		152ACAB7246C33A80010A209 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152ACAB6246C33A80010A209 /* ViewController3.swift */; };
+		152ACAB7246C33A80010A209 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152ACAB6246C33A80010A209 /* ViewController.swift */; };
 		152ACAB92471792F0010A209 /* BannerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152ACAB82471792F0010A209 /* BannerFlowLayout.swift */; };
 		1598FC152469A8CD00A5196C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC142469A8CD00A5196C /* AppDelegate.swift */; };
 		1598FC172469A8CD00A5196C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC162469A8CD00A5196C /* SceneDelegate.swift */; };
-		1598FC192469A8CD00A5196C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC182469A8CD00A5196C /* ViewController.swift */; };
+		1598FC192469A8CD00A5196C /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC182469A8CD00A5196C /* ViewController2.swift */; };
 		1598FC1C2469A8CD00A5196C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1598FC1A2469A8CD00A5196C /* Main.storyboard */; };
 		1598FC1E2469A8CE00A5196C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1598FC1D2469A8CE00A5196C /* Assets.xcassets */; };
 		1598FC212469A8CE00A5196C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1598FC1F2469A8CE00A5196C /* LaunchScreen.storyboard */; };
 		1598FC2C2469A8CE00A5196C /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC2B2469A8CE00A5196C /* DemoTests.swift */; };
 		1598FC372469A8CE00A5196C /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC362469A8CE00A5196C /* DemoUITests.swift */; };
-		1598FC4F2469BA5C00A5196C /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598FC4E2469BA5C00A5196C /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,12 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		152ACAB6246C33A80010A209 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		152ACAB6246C33A80010A209 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		152ACAB82471792F0010A209 /* BannerFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFlowLayout.swift; sourceTree = "<group>"; };
 		1598FC112469A8CD00A5196C /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1598FC142469A8CD00A5196C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1598FC162469A8CD00A5196C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1598FC182469A8CD00A5196C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1598FC182469A8CD00A5196C /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		1598FC1B2469A8CD00A5196C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1598FC1D2469A8CE00A5196C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1598FC202469A8CE00A5196C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +54,6 @@
 		1598FC362469A8CE00A5196C /* DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITests.swift; sourceTree = "<group>"; };
 		1598FC382469A8CE00A5196C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1598FC442469B9F400A5196C /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
-		1598FC4E2469BA5C00A5196C /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +106,9 @@
 			children = (
 				1598FC142469A8CD00A5196C /* AppDelegate.swift */,
 				1598FC162469A8CD00A5196C /* SceneDelegate.swift */,
-				1598FC182469A8CD00A5196C /* ViewController.swift */,
-				152ACAB6246C33A80010A209 /* ViewController3.swift */,
+				1598FC182469A8CD00A5196C /* ViewController2.swift */,
+				152ACAB6246C33A80010A209 /* ViewController.swift */,
 				152ACAB82471792F0010A209 /* BannerFlowLayout.swift */,
-				1598FC4E2469BA5C00A5196C /* ViewController2.swift */,
 				1598FC1A2469A8CD00A5196C /* Main.storyboard */,
 				1598FC1D2469A8CE00A5196C /* Assets.xcassets */,
 				1598FC1F2469A8CE00A5196C /* LaunchScreen.storyboard */,
@@ -271,9 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				152ACAB7246C33A80010A209 /* ViewController3.swift in Sources */,
-				1598FC4F2469BA5C00A5196C /* ViewController2.swift in Sources */,
-				1598FC192469A8CD00A5196C /* ViewController.swift in Sources */,
+				152ACAB7246C33A80010A209 /* ViewController.swift in Sources */,
+				1598FC192469A8CD00A5196C /* ViewController2.swift in Sources */,
 				1598FC152469A8CD00A5196C /* AppDelegate.swift in Sources */,
 				1598FC172469A8CD00A5196C /* SceneDelegate.swift in Sources */,
 				152ACAB92471792F0010A209 /* BannerFlowLayout.swift in Sources */,

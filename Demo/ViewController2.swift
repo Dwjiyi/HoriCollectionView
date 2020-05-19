@@ -2,109 +2,122 @@
 //  ViewController2.swift
 //  Demo
 //
-//  Created by wy_d on 2020/5/12.
+//  Created by wy_d on 2020/5/11.
 //  Copyright © 2020 wy. All rights reserved.
 //
 
 import UIKit
 
-/**
- 这套方案禁掉了collectionView的滑动，改为swipe手势手动滑动，
- 不提倡，仅供参考
- */
-class ViewController2: ViewController {
+let SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.width
+let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.height
 
+class ViewController2: UIViewController {
+    
+    let itemCount = 20
+    let itemSize = CGSize(width: 280, height: 80)
+    let minimumInteritemSpacing: CGFloat = 10
+    let minimumLineSpacing: CGFloat = 10
+    var dragStartX: CGFloat = 0 // 拖拽时的起始点
+    var dragIndex: Int = 0 // 拖拽的
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
+        view.addSubview(collectionView)
+    }
 
-        // Do any additional setup after loading the view.
-        
-        collectionView.isScrollEnabled = false
-        
-        otherButton.setTitle("返回", for: .normal)
-
-        addGesture()
-    }
     
-    func addGesture() {
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
-        swipeRight.direction = .right
-        collectionView.addGestureRecognizer(swipeRight)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
-        swipeLeft.direction = .left
-        collectionView.addGestureRecognizer(swipeLeft)
-    }
+    //MARK: - Lazy Load Properties
+    lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 150, width: SCREEN_WIDTH , height: 120), collectionViewLayout: self.layout)
+        collectionView.backgroundColor = UIColor.green
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        let scrollWidth = CGFloat(itemCount) * (itemSize.width + minimumInteritemSpacing) + layout.sectionInset.left + layout.sectionInset.right
+        collectionView.contentSize = CGSize(width: scrollWidth, height: 120)
+        collectionView.decelerationRate = .fast
+        return collectionView
+    }()
     
-    override func onNextTap() {
-        self.dismiss(animated: true, completion: nil)
-    }
+    lazy var layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = itemSize
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
+        return layout
+    }()
     
-    @objc func handleSwipeGesture(_ swipeGesture: UISwipeGestureRecognizer) {
-        
-        let gesture = swipeGesture
-                
-        let point = gesture.location(in: collectionView)
-        
-        let width = itemSize.width + minimumInteritemSpacing
-        
-        // 计算当前滑动的cell索引
-        var currentIndex = Int((point.x - layout.sectionInset.left) / width)
-        
-        // 将点转化成view上的点
-        let pointOnView = collectionView.convert(point, to: view)
-        
-        // 计算该点在view上的x坐标
-        let x = SCREEN_WIDTH.truncatingRemainder(dividingBy: pointOnView.x)
-        
-        if gesture.direction == .left {
-            
-            // 右划特殊考虑最后一个
-            if currentIndex <= itemCount - 2, x < width {
-                currentIndex = currentIndex + 1
-            }
-            
-        } else if gesture.direction == .right {
-            
-            // 左划特殊考虑第一个和倒数第二个
-            if currentIndex > 0 {
-                
-                if collectionView.contentOffset.x > width * CGFloat(itemCount - 2), currentIndex == itemCount - 2 {
-                    
-                    print("这是在最后一页左划倒数第二个item,index不变")
-                    
-                } else {
-                    
-                    if x <= layout.sectionInset.left {
-                        
-                        print("currentIndex 不变")
-                        
-                    } else if (x > layout.sectionInset.left && x < width + layout.sectionInset.left) || currentIndex == 1 {
-                        
-                        currentIndex = currentIndex - 1
-                        
-                    } else {
-                        
-                        currentIndex = currentIndex - 2
-                    }
-                }
-            }
-        }
-        
-        if currentIndex == itemCount - 1 { // 最后一个
-            
-            UIView.animate(withDuration: 0.3) {
-                self.collectionView.setContentOffset(CGPoint(x: width * CGFloat(currentIndex) - (SCREEN_WIDTH - 15 - self.itemSize.width - self.layout.sectionInset.right) , y: 0), animated: true)
-            }
-        
-        } else {
-            
-            UIView.animate(withDuration: 0.3) {
-                self.collectionView.setContentOffset(CGPoint(x: width * CGFloat(currentIndex) , y: 0), animated: true)
-            }
-        }
-
-    }
- 
+    
 }
+
+extension ViewController2: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return itemCount
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        cell.backgroundColor = UIColor.red
+        return cell
+    }
+}
+
+extension ViewController2: UIScrollViewDelegate {
+    /// 即将开始拖拽
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // 1. 标记拖动前的位置
+        dragStartX = scrollView.contentOffset.x
+    }
+    
+    /// 即将结束拖拽
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // 2. 标记拖动后手指离开的位置
+        let currentX = scrollView.contentOffset.x
+        // 3. 计算手指拖动的距离
+        let moveWidth = currentX - dragStartX
+        // 4. 以0.5个itemWidth为界限, 多则滑到下一个/上一个，少则回到原位
+        let movePage = Int(moveWidth / (itemSize.width * 0.5))
+        if velocity.x > 0 || movePage > 0 {
+            dragIndex = 1
+        } else if velocity.x < 0 || movePage < 0 {
+            dragIndex = -1
+        } else {
+            dragIndex = 0
+        }
+        // 5. 计算当前cell中心点的index
+        let index = Int((dragStartX + (itemSize.width + minimumInteritemSpacing) * 0.5) / (itemSize.width + minimumLineSpacing))
+        print("scrollViewWillEndDragging: \(index)")
+        // 最后一个cell继续往右滑， 不滑了
+        if (index == itemCount - 1 && dragIndex == 1) {
+            return
+        }
+        
+        collectionView.scrollToItem(at: IndexPath(row: index + dragIndex, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        
+    }
+    
+    /// 滑动即将开始减速
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        let index = Int((dragStartX + (itemSize.width + minimumInteritemSpacing) * 0.5) / (itemSize.width + minimumLineSpacing))
+        print("scrollViewWillBeginDecelerating: \(index)")
+        
+        if (index == itemCount - 1 && dragIndex == 1) {
+            return
+        }
+        
+        collectionView.scrollToItem(at: IndexPath(row: index + dragIndex, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        
+    }
+    
+    
+    
+}
+
 

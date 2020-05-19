@@ -23,16 +23,14 @@ class BannerFlowLayout: UICollectionViewFlowLayout {
         }
         
         let scrollWidthEach = itemSize.width + minimumLineSpacing
-        
-        let offsetMax = collectionView.contentSize.width - (scrollWidthEach + sectionInset.right + minimumLineSpacing)
-        
         let offsetMin = CGFloat(0)
-        print("velocity:\(velocity)  proposedContentOffset:\(proposedContentOffset.x) ")
+        let offsetMax = collectionView.contentSize.width - SCREEN_WIDTH
         
         let currentX = collectionView.contentOffset.x
         let moveWidth = currentX - lastOffsetX
-        let movePage = Int(moveWidth/(self.itemSize.width*0.5))
+        let movePage = Int(moveWidth/(self.itemSize.width*0.25))
         var dragIndex = 0
+        
         if velocity.x > 0 || movePage > 0 {
             dragIndex = 1
         } else if velocity.x < 0 || movePage < 0 {
@@ -40,18 +38,32 @@ class BannerFlowLayout: UICollectionViewFlowLayout {
         } else {
             dragIndex = 0
         }
-        let index = Int((lastOffsetX + (itemSize.width + minimumInteritemSpacing) * 0.5) / (itemSize.width + minimumInteritemSpacing)) // 当前cell中心点的index
-        var leftOffset = (SCREEN_WIDTH - itemSize.width - 2 * minimumInteritemSpacing) / 2
         
-        if lastOffsetX <= offsetMin {
+        if lastOffsetX == offsetMin, velocity.x > 0 { // 第一个往右滑动
+            
+            let leftOffset = (SCREEN_WIDTH - itemSize.width - 2 * minimumInteritemSpacing) / 2
             lastOffsetX = lastOffsetX + CGFloat(dragIndex) * scrollWidthEach - leftOffset
-        } else if lastOffsetX > offsetMax {
+            
+        } else if lastOffsetX <= offsetMin, velocity.x < 0 { // 第一个往左滑动
+
+            lastOffsetX = offsetMin
+            
+        } else if lastOffsetX >= offsetMax, velocity.x > 0 { // 最后一个往右滑动
+
+            lastOffsetX = offsetMax
+
+        } else if lastOffsetX >= offsetMax, velocity.x < 0 { // 最后一个往左滑动
+            
+            let rightOffset = itemSize.width + sectionInset.right - (SCREEN_WIDTH - itemSize.width - 2 * minimumLineSpacing) / 2
+            lastOffsetX = offsetMax - rightOffset
+
+        } else {
+
             lastOffsetX = lastOffsetX + CGFloat(dragIndex) * scrollWidthEach
-
         }
-
-        
-
+ 
+        print("最终的lastX:\(lastOffsetX)")
+ 
         let realProposedContentOffset = CGPoint(x: lastOffsetX, y: proposedContentOffset.y)
         return realProposedContentOffset
 
